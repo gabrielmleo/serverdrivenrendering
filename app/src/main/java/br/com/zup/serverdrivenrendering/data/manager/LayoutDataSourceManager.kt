@@ -11,5 +11,4 @@ class LayoutDataSourceManager (
     override suspend fun getMainScreenLayoutData(): ScreenInfo {
         TODO("Not yet implemented")
     }
-    
 }

@@ -1,4 +1,4 @@
-package br.com.zup.serverdrivenrendering.presentation.widget
+package br.com.zup.serverdrivenrendering.presentation.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
