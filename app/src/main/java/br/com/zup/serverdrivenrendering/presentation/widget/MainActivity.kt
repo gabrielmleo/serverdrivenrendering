@@ -1,10 +1,7 @@
-package br.com.zup.serverdrivenrendering
+package br.com.zup.serverdrivenrendering.presentation.widget
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import br.com.zup.serverdrivenrendering.widget.layout.Vertical
-import br.com.zup.serverdrivenrendering.widget.ui.Button
-import br.com.zup.serverdrivenrendering.widget.ui.Text
 
 class MainActivity : AppCompatActivity() {
 
