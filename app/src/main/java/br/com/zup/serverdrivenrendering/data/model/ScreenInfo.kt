@@ -1,5 +1,6 @@
 package br.com.zup.serverdrivenrendering.data.model
 
-class ScreenInfo {
-
-}
+data class ScreenInfo (
+    val layoutComponent: ScreenComponent,
+    val children: List<ScreenComponent>
+)
