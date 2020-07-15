@@ -4,11 +4,14 @@ import br.com.zup.serverdrivenrendering.data.datasource.JsonProvider
 import br.com.zup.serverdrivenrendering.data.datasource.LayoutDataSource
 import br.com.zup.serverdrivenrendering.data.model.ScreenInfo
 
-class LayoutDataSourceManager (
+class LayoutDataSourceManager(
     private val jsonProvider: JsonProvider,
     private val jsonManager: JsonManager
-) : LayoutDataSource{
+) : LayoutDataSource {
     override suspend fun getMainScreenLayoutData(): ScreenInfo {
-        TODO("Not yet implemented")
+        return ScreenInfo(
+            layoutComponent = jsonManager.extractLayoutComponent(jsonString = jsonProvider.provide()),
+            children = jsonManager.extractChildrenComponent(jsonString = jsonProvider.provide())
+        )
     }
 }
