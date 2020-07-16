@@ -1,5 +1,7 @@
 package br.com.zup.serverdrivenrendering.data.manager
 
+import br.com.zup.serverdrivenrendering.data.model.LayoutComponentTag
+import br.com.zup.serverdrivenrendering.data.model.LayoutComponentType
 import br.com.zup.serverdrivenrendering.data.util.JSONObjectWrapper
 import br.com.zup.serverdrivenrendering.presentation.widget.core.Widget
 import br.com.zup.serverdrivenrendering.presentation.widget.layout.Vertical
@@ -11,11 +13,11 @@ import org.json.JSONException
 
 class JsonManager(private val jsonObjectWrapper: JSONObjectWrapper = JSONObjectWrapper()) {
 
-    fun extractChildrenComponent(jsonString: String): List<Widget> {
+    private fun extractChildrenComponent(jsonString: String): List<Widget> {
         var childrenComponentArray = mutableListOf<Widget>()
         return try {
             val childrenJsonArray: JSONArray =
-                jsonObjectWrapper.getJsonArrayWithTagFromJsonString(jsonString, "children")
+                jsonObjectWrapper.getJsonArrayWithTagFromJsonString(jsonString, LayoutComponentTag.CHILDREN.tagName)
             (0 until childrenJsonArray.length()).forEach { i ->
                 childrenComponentArray.add(
                     i,
@@ -32,7 +34,7 @@ class JsonManager(private val jsonObjectWrapper: JSONObjectWrapper = JSONObjectW
     fun extractLayoutComponent(jsonString: String): Widget {
         return try {
             val layoutComponentName =
-                jsonObjectWrapper.getTagValueFromJson("_componentName_", jsonString)
+                jsonObjectWrapper.getTagValueFromJson(LayoutComponentTag.COMPONENT_NAME.tagName, jsonString)
             getComponentByTypeWithJson(layoutComponentName, jsonString)
         } catch (jsonException: JSONException) {
             UndefinedWidget()
@@ -44,14 +46,14 @@ class JsonManager(private val jsonObjectWrapper: JSONObjectWrapper = JSONObjectW
         jsonString: String
     ): Widget {
         return when (layoutComponentName) {
-            "vertical" -> {
+            LayoutComponentType.LAYOUT_VERTICAL.type -> {
                 Vertical(children = extractChildrenComponent(jsonString))
             }
-            "text" -> {
-                Text(text = jsonObjectWrapper.getTagValueFromJson(tag = "text", jsonString = jsonString))
+            LayoutComponentType.TEXT.type -> {
+                Text(text = jsonObjectWrapper.getTagValueFromJson(tag = LayoutComponentTag.TEXT.tagName, jsonString = jsonString))
             }
-            "button" -> {
-                Button(text = jsonObjectWrapper.getTagValueFromJson(tag = "text", jsonString = jsonString))
+            LayoutComponentType.BUTTON.type -> {
+                Button(text = jsonObjectWrapper.getTagValueFromJson(tag = LayoutComponentTag.TEXT.tagName, jsonString = jsonString))
             }
             else -> {
                 TODO()

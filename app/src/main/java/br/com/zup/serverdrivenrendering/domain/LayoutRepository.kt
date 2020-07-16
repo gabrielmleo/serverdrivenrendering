@@ -1,12 +1,12 @@
 package br.com.zup.serverdrivenrendering.domain
 
 import br.com.zup.serverdrivenrendering.data.datasource.LayoutDataSource
+import br.com.zup.serverdrivenrendering.data.model.ScreenInfo
 
 class LayoutRepository(
-    private val screenInfoMapper: ScreenInfoMapper,
     private val layoutDataSource: LayoutDataSource
 ) {
-    suspend fun getMainScreenLayoutData(): ScreenLayout {
-        TODO()
+    suspend fun getMainScreenLayoutData(): ScreenInfo {
+        return layoutDataSource.getMainScreenLayoutData()
     }
 }

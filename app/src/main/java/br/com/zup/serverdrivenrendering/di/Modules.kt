@@ -12,7 +12,6 @@ import org.koin.dsl.module
 val repositoryModule = module {
     single {
         LayoutRepository(
-            screenInfoMapper = get(),
             layoutDataSource = get()
         )
     }

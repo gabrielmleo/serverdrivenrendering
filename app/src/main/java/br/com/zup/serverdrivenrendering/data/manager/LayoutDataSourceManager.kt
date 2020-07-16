@@ -10,8 +10,7 @@ class LayoutDataSourceManager(
 ) : LayoutDataSource {
     override suspend fun getMainScreenLayoutData(): ScreenInfo {
         return ScreenInfo(
-            layoutComponent = jsonManager.extractLayoutComponent(jsonString = jsonProvider.provide()),
-            children = jsonManager.extractChildrenComponent(jsonString = jsonProvider.provide())
+            rootComponent = jsonManager.extractLayoutComponent(jsonString = jsonProvider.provide())
         )
     }
 }
