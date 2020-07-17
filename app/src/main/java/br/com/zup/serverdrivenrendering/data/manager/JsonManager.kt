@@ -10,6 +10,7 @@ import br.com.zup.serverdrivenrendering.presentation.widget.ui.Text
 import br.com.zup.serverdrivenrendering.presentation.widget.ui.UndefinedWidget
 import org.json.JSONArray
 import org.json.JSONException
+import java.lang.Exception
 
 class JsonManager(private val jsonObjectWrapper: JSONObjectWrapper = JSONObjectWrapper()) {
 
@@ -36,7 +37,7 @@ class JsonManager(private val jsonObjectWrapper: JSONObjectWrapper = JSONObjectW
             val layoutComponentName =
                 jsonObjectWrapper.getTagValueFromJson(LayoutComponentTag.COMPONENT_NAME.tagName, jsonString)
             getComponentByTypeWithJson(layoutComponentName, jsonString)
-        } catch (jsonException: JSONException) {
+        } catch (jsonException: Exception) {
             UndefinedWidget()
         }
     }
@@ -56,7 +57,7 @@ class JsonManager(private val jsonObjectWrapper: JSONObjectWrapper = JSONObjectW
                 Button(text = jsonObjectWrapper.getTagValueFromJson(tag = LayoutComponentTag.TEXT.tagName, jsonString = jsonString))
             }
             else -> {
-                TODO()
+                UndefinedWidget()
             }
         }
     }

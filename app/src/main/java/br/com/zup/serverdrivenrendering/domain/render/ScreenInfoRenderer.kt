@@ -14,12 +14,12 @@ import br.com.zup.serverdrivenrendering.presentation.widget.ui.Text
 class ScreenInfoRenderer(private val context: Context) {
 
     fun renderScreenInfo(screenInfo: ScreenInfo): ViewGroup {
-        when (screenInfo.rootComponent) {
+        return when (screenInfo.rootComponent) {
             is Vertical -> {
-                return renderRootVerticalComponent(screenInfo.rootComponent)
+                renderRootVerticalComponent(screenInfo.rootComponent)
             }
             else -> {
-                TODO("Should return nothing")
+                emptyLinearLayout()
             }
         }
     }
@@ -43,7 +43,7 @@ class ScreenInfoRenderer(private val context: Context) {
                 renderButtonComponent(it)
             }
             else -> {
-                TODO("Should return nothing")
+                emptyView()
             }
         }
     }
@@ -58,5 +58,13 @@ class ScreenInfoRenderer(private val context: Context) {
         val textView = TextView(context)
         textView.text = it.text
         return textView
+    }
+
+    private fun emptyLinearLayout(): LinearLayout {
+        return LinearLayout(context)
+    }
+
+    private fun emptyView(): View {
+        return View(context)
     }
 }
