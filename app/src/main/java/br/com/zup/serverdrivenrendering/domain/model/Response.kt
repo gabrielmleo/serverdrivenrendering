@@ -1,4 +1,4 @@
-package br.com.zup.serverdrivenrendering.domain.util
+package br.com.zup.serverdrivenrendering.domain.model
 
 class Response<T> private constructor(
     private val value: T?,
@@ -29,9 +29,13 @@ class Response<T> private constructor(
 
     fun <V> map(transform: (v: T) -> V): Response<V> {
         return if (isSuccess) {
-            success(transform(getOrThrow()))
+            success(
+                transform(getOrThrow())
+            )
         } else {
-            failure(this.failure!!)
+            failure(
+                this.failure!!
+            )
         }
     }
 

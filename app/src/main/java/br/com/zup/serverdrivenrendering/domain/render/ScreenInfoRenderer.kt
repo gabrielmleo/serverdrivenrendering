@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
-import br.com.zup.serverdrivenrendering.data.model.ScreenInfo
+import br.com.zup.serverdrivenrendering.domain.model.ScreenInfo
 import br.com.zup.serverdrivenrendering.presentation.widget.core.Widget
 import br.com.zup.serverdrivenrendering.presentation.widget.layout.Vertical
 import br.com.zup.serverdrivenrendering.presentation.widget.ui.Text

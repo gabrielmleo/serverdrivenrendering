@@ -2,9 +2,9 @@ package br.com.zup.serverdrivenrendering.data.manager
 
 import br.com.zup.serverdrivenrendering.data.datasource.JsonProvider
 import br.com.zup.serverdrivenrendering.data.datasource.LayoutDataSource
-import br.com.zup.serverdrivenrendering.data.model.ScreenInfo
+import br.com.zup.serverdrivenrendering.domain.model.ScreenInfo
 import br.com.zup.serverdrivenrendering.domain.exception.ScreenReaderException
-import br.com.zup.serverdrivenrendering.domain.util.Response
+import br.com.zup.serverdrivenrendering.domain.model.Response
 
 class LayoutDataSourceManager(
     private val jsonProvider: JsonProvider,
