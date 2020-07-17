@@ -39,7 +39,7 @@ class ScreenInfoRenderer(private val context: Context) {
             is Text -> {
                 renderTextComponent(it)
             }
-            is Button -> {
+            is br.com.zup.serverdrivenrendering.presentation.widget.ui.Button -> {
                 renderButtonComponent(it)
             }
             else -> {
@@ -48,7 +48,7 @@ class ScreenInfoRenderer(private val context: Context) {
         }
     }
 
-    private fun renderButtonComponent(it: Button): Button {
+    private fun renderButtonComponent(it: br.com.zup.serverdrivenrendering.presentation.widget.ui.Button): Button {
         val button = Button(context)
         button.text = it.text
         return button

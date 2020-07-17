@@ -8,6 +8,6 @@ class JSONObjectWrapper() {
         return JSONObject(jsonString).getString(tag)
     }
     fun getJsonArrayWithTagFromJsonString(jsonString: String, tag: String): JSONArray {
-        return JSONObject(jsonString).getJSONObject(jsonString).getJSONArray(tag)
+        return JSONObject(jsonString).getJSONArray(tag)
     }
 }

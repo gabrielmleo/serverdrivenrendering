@@ -5,7 +5,10 @@ import br.com.zup.serverdrivenrendering.data.datasource.LayoutDataSource
 import br.com.zup.serverdrivenrendering.data.manager.JsonManager
 import br.com.zup.serverdrivenrendering.data.manager.LayoutDataSourceManager
 import br.com.zup.serverdrivenrendering.domain.LayoutRepository
+import br.com.zup.serverdrivenrendering.domain.model.DefaultScreenProvider
+import br.com.zup.serverdrivenrendering.domain.render.ScreenInfoRenderer
 import br.com.zup.serverdrivenrendering.presentation.view.MainViewModel
+import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -31,7 +34,11 @@ val dataModule = module {
 val presentationModule = module {
     viewModel {
         MainViewModel(
-            layoutRepository = get()
+            layoutRepository = get(),
+            defaultScreenProvider = get()
         )
     }
+
+    factory { DefaultScreenProvider() }
+    factory { ScreenInfoRenderer(androidContext()) }
 }
