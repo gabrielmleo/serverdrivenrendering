@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     private val screenInfoRenderer: ScreenInfoRenderer by inject()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mainViewModel.fetchScreenLayout()
         observerFetchScreenLayout()
     }
 

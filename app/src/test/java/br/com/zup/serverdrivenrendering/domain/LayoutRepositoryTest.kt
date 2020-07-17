@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
+@Suppress("ClassName", "TestFunctionName")
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 class LayoutRepositoryTest {
 
@@ -19,12 +20,13 @@ class LayoutRepositoryTest {
         private val responseMock: Response = mockk()
         private val layoutDataSourceMock: LayoutDataSource = mockk()
         private val subject = LayoutRepository(layoutDataSourceMock)
-        @Test
-        fun `When call getMainScreenLayoutData Should call layoutDataManager method`() = runBlocking{
 
-            coEvery { layoutDataSourceMock.getMainScreenLayoutData() } returns responseMock
-            subject.getMainScreenLayoutData()
-            coVerify { layoutDataSourceMock.getMainScreenLayoutData() }
-        }
+        @Test
+        fun `When call getMainScreenLayoutData Should call layoutDataManager method`() =
+            runBlocking {
+                coEvery { layoutDataSourceMock.getMainScreenLayoutData() } returns responseMock
+                subject.getMainScreenLayoutData()
+                coVerify { layoutDataSourceMock.getMainScreenLayoutData() }
+            }
     }
 }

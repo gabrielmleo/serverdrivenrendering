@@ -18,13 +18,10 @@ class MainViewModel (
     private val defaultScreenProvider: DefaultScreenProvider
 ): ViewModel() {
 
-    init {
-        fetchScreenLayout()
-    }
     private val _mainScreenLayoutLiveData = MutableLiveData<ScreenInfo>()
     val mainScreenLayoutLiveData : LiveData<ScreenInfo> = _mainScreenLayoutLiveData
 
-    private fun fetchScreenLayout() = viewModelScope.launch(dispatcher) {
+    fun fetchScreenLayout() = viewModelScope.launch(dispatcher) {
         val result = layoutRepository.getMainScreenLayoutData()
         when(result) {
             is Response.Success -> {

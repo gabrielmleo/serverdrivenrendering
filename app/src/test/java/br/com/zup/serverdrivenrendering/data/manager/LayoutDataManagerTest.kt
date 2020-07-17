@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
-
+@Suppress("ClassName", "TestFunctionName")
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 class LayoutDataManagerTest {
 
