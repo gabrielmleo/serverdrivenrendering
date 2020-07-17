@@ -17,7 +17,7 @@ import org.junit.jupiter.api.TestInstance
 
 
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
-class LayoutDataSourceManagerTest {
+class LayoutDataManagerTest {
 
     private val undefinedWidgetMock: Widget = UndefinedWidget()
     private val widgetMock: Widget = mockk()
@@ -27,7 +27,7 @@ class LayoutDataSourceManagerTest {
 
     @Nested
     inner class `Given a jsonManager and a jsonProvider` {
-        val subject = LayoutDataSourceManager(jsonProviderMock, jsonManagerMock)
+        val subject = LayoutDataManager(jsonProviderMock, jsonManagerMock)
 
         @Test
         fun `When jsonManager return a widget Should return response success with widget inside it`() =

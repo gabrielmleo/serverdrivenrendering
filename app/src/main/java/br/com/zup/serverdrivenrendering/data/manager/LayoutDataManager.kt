@@ -9,7 +9,7 @@ import br.com.zup.serverdrivenrendering.presentation.widget.ui.UndefinedWidget
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class LayoutDataSourceManager(
+class LayoutDataManager(
     private val jsonProvider: JsonProvider,
     private val jsonManager: JsonManager
 ) : LayoutDataSource {

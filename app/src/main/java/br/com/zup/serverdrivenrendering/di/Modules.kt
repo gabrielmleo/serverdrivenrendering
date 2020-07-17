@@ -3,7 +3,7 @@ package br.com.zup.serverdrivenrendering.di
 import br.com.zup.serverdrivenrendering.data.datasource.JsonProvider
 import br.com.zup.serverdrivenrendering.data.datasource.LayoutDataSource
 import br.com.zup.serverdrivenrendering.data.manager.JsonManager
-import br.com.zup.serverdrivenrendering.data.manager.LayoutDataSourceManager
+import br.com.zup.serverdrivenrendering.data.manager.LayoutDataManager
 import br.com.zup.serverdrivenrendering.domain.LayoutRepository
 import br.com.zup.serverdrivenrendering.domain.model.DefaultScreenProvider
 import br.com.zup.serverdrivenrendering.domain.render.ScreenInfoRenderer
@@ -22,7 +22,7 @@ val repositoryModule = module {
 
 val dataModule = module {
     single<LayoutDataSource> {
-        LayoutDataSourceManager(
+        LayoutDataManager(
             jsonProvider = get(),
             jsonManager = get()
         )
