@@ -1,4 +1,4 @@
-package br.com.zup.serverdrivenrendering.domain.model
+package br.com.zup.serverdrivenrendering.model
 
 sealed class Response {
     data class Success(val screenInfo: ScreenInfo): Response()

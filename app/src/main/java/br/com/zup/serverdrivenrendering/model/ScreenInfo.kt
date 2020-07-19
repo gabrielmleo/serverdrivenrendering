@@ -1,4 +1,4 @@
-package br.com.zup.serverdrivenrendering.domain.model
+package br.com.zup.serverdrivenrendering.model
 
 import br.com.zup.serverdrivenrendering.presentation.widget.core.Widget
 

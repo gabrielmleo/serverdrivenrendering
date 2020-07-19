@@ -1,7 +1,7 @@
 package br.com.zup.serverdrivenrendering.domain
 
-import br.com.zup.serverdrivenrendering.domain.model.DefaultScreenProvider
-import br.com.zup.serverdrivenrendering.domain.model.ScreenInfo
+import br.com.zup.serverdrivenrendering.domain.util.DefaultScreenProvider
+import br.com.zup.serverdrivenrendering.model.ScreenInfo
 import br.com.zup.serverdrivenrendering.presentation.widget.layout.Vertical
 import br.com.zup.serverdrivenrendering.presentation.widget.ui.Text
 import org.junit.jupiter.api.Assertions
@@ -16,7 +16,8 @@ class DefaultScreenProviderTest {
     @Nested
     inner class `Given a DefaultScreenProvider` {
 
-        val subject = DefaultScreenProvider()
+        val subject =
+            DefaultScreenProvider()
         @Test
         fun `When call getDefaultErrorScreen Should return default screen info`() {
             val expected = ScreenInfo(

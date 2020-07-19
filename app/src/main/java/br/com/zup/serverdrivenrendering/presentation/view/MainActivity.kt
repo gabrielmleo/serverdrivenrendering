@@ -3,7 +3,7 @@ package br.com.zup.serverdrivenrendering.presentation.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import br.com.zup.serverdrivenrendering.domain.render.ScreenInfoRenderer
+import br.com.zup.serverdrivenrendering.presentation.render.ScreenInfoRenderer
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 

@@ -12,7 +12,7 @@ import org.json.JSONArray
 import org.json.JSONException
 import java.lang.Exception
 
-class JsonManager(private val jsonObjectWrapper: JSONObjectWrapper = JSONObjectWrapper()) {
+class JsonHandler(private val jsonObjectWrapper: JSONObjectWrapper = JSONObjectWrapper()) {
 
     private fun extractChildrenComponent(jsonString: String): List<Widget> {
         var childrenComponentArray = mutableListOf<Widget>()

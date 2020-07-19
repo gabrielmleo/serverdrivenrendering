@@ -1,7 +1,7 @@
 package br.com.zup.serverdrivenrendering.domain
 
 import br.com.zup.serverdrivenrendering.data.datasource.LayoutDataSource
-import br.com.zup.serverdrivenrendering.domain.model.Response
+import br.com.zup.serverdrivenrendering.model.Response
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -12,14 +12,14 @@ import org.junit.jupiter.api.TestInstance
 
 @Suppress("ClassName", "TestFunctionName")
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
-class LayoutRepositoryTest {
+class LayoutServiceTest {
 
     @Nested
     inner class `Given a layoutDataManager` {
 
         private val responseMock: Response = mockk()
         private val layoutDataSourceMock: LayoutDataSource = mockk()
-        private val subject = LayoutRepository(layoutDataSourceMock)
+        private val subject = LayoutService(layoutDataSourceMock)
 
         @Test
         fun `When call getMainScreenLayoutData Should call layoutDataManager method`() =

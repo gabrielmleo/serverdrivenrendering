@@ -2,8 +2,8 @@ package br.com.zup.serverdrivenrendering.data.manager
 
 import br.com.zup.serverdrivenrendering.data.datasource.JsonProvider
 import br.com.zup.serverdrivenrendering.domain.exception.ScreenReaderException
-import br.com.zup.serverdrivenrendering.domain.model.Response
-import br.com.zup.serverdrivenrendering.domain.model.ScreenInfo
+import br.com.zup.serverdrivenrendering.model.Response
+import br.com.zup.serverdrivenrendering.model.ScreenInfo
 import br.com.zup.serverdrivenrendering.factory.createJsonFile
 import br.com.zup.serverdrivenrendering.presentation.widget.core.Widget
 import br.com.zup.serverdrivenrendering.presentation.widget.ui.UndefinedWidget
@@ -22,18 +22,18 @@ class LayoutDataManagerTest {
     private val undefinedWidgetMock: Widget = UndefinedWidget()
     private val widgetMock: Widget = mockk()
     private val jsonProviderMock: JsonProvider = mockk()
-    private val jsonManagerMock: JsonManager = mockk()
+    private val jsonHandlerMock: JsonHandler = mockk()
     private val jsonMock = createJsonFile()
 
     @Nested
     inner class `Given a jsonManager and a jsonProvider` {
-        val subject = LayoutDataManager(jsonProviderMock, jsonManagerMock)
+        val subject = LayoutDataManager(jsonProviderMock, jsonHandlerMock)
 
         @Test
         fun `When jsonManager return a widget Should return response success with widget inside it`() =
             runBlocking {
                 every { jsonProviderMock.provide() } returns jsonMock
-                every { jsonManagerMock.extractLayoutComponent(jsonString = jsonMock) } returns widgetMock
+                every { jsonHandlerMock.extractLayoutComponent(jsonString = jsonMock) } returns widgetMock
 
                 val result = subject.getMainScreenLayoutData()
                 val expected = Response.Success(ScreenInfo(rootComponent = widgetMock))
@@ -44,7 +44,7 @@ class LayoutDataManagerTest {
         fun `When jsonManager return an error Should return response failure with ScreenReaderException inside it`() =
             runBlocking {
                 every { jsonProviderMock.provide() } returns jsonMock
-                every { jsonManagerMock.extractLayoutComponent(jsonString = jsonMock) } returns undefinedWidgetMock
+                every { jsonHandlerMock.extractLayoutComponent(jsonString = jsonMock) } returns undefinedWidgetMock
 
                 val result = subject.getMainScreenLayoutData()
                 val expected = Response.Failure(ScreenReaderException())

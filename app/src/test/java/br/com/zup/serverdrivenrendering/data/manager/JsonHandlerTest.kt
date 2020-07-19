@@ -19,7 +19,7 @@ import org.junit.jupiter.api.TestInstance
 
 @Suppress("ClassName", "TestFunctionName")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class JsonManagerTest {
+class JsonHandlerTest {
 
     @Nested
     inner class `Given a valid Json of main ScreenInfo object to JsonManager` {
@@ -39,7 +39,7 @@ class JsonManagerTest {
         private val childComponentThreeText = "Continue"
         private val rootComponentText = "vertical"
 
-        val subject = JsonManager(jsonObjectWrapperMock)
+        val subject = JsonHandler(jsonObjectWrapperMock)
 
         @Test
         fun `When call extract method for main layout Should return the corresponding ScreenComponent object`() {

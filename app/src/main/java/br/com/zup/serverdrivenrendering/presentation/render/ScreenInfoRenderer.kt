@@ -1,4 +1,4 @@
-package br.com.zup.serverdrivenrendering.domain.render
+package br.com.zup.serverdrivenrendering.presentation.render
 
 import android.content.Context
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
-import br.com.zup.serverdrivenrendering.domain.model.ScreenInfo
+import br.com.zup.serverdrivenrendering.model.ScreenInfo
 import br.com.zup.serverdrivenrendering.presentation.widget.core.Widget
 import br.com.zup.serverdrivenrendering.presentation.widget.layout.Vertical
 import br.com.zup.serverdrivenrendering.presentation.widget.ui.Text

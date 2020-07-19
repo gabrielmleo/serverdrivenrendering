@@ -1,10 +1,10 @@
 package br.com.zup.serverdrivenrendering.presentation
 
 import br.com.zup.serverdrivenrendering.InstantExecutorExtension
-import br.com.zup.serverdrivenrendering.domain.LayoutRepository
-import br.com.zup.serverdrivenrendering.domain.model.DefaultScreenProvider
-import br.com.zup.serverdrivenrendering.domain.model.Response
-import br.com.zup.serverdrivenrendering.domain.model.ScreenInfo
+import br.com.zup.serverdrivenrendering.domain.LayoutService
+import br.com.zup.serverdrivenrendering.domain.util.DefaultScreenProvider
+import br.com.zup.serverdrivenrendering.model.Response
+import br.com.zup.serverdrivenrendering.model.ScreenInfo
 import br.com.zup.serverdrivenrendering.presentation.view.MainViewModel
 import io.mockk.*
 import kotlinx.coroutines.runBlocking
@@ -21,11 +21,11 @@ import org.junit.jupiter.api.extension.ExtendWith
 class MainViewModelTest {
 
     private val defaultScreenProviderMock: DefaultScreenProvider = mockk()
-    private val layoutRepositoryMock: LayoutRepository = mockk()
+    private val layoutServiceMock: LayoutService = mockk()
     private val testDispatcher = TestCoroutineDispatcher()
 
     private val subject = MainViewModel(
-        layoutRepository = layoutRepositoryMock,
+        layoutRepository = layoutServiceMock,
         dispatcher = testDispatcher,
         defaultScreenProvider = defaultScreenProviderMock
     )
@@ -37,17 +37,17 @@ class MainViewModelTest {
         fun `When call fetchScreenLayout the ViewModel Should call repository get method`() =
             runBlocking {
                 val screenInfoMock = mockk<ScreenInfo>()
-                coEvery { layoutRepositoryMock.getMainScreenLayoutData() } returns Response.Success(
+                coEvery { layoutServiceMock.getMainScreenLayoutData() } returns Response.Success(
                     screenInfo = screenInfoMock
                 )
                 subject.fetchScreenLayout()
-                coVerify(exactly = 1) { layoutRepositoryMock.getMainScreenLayoutData() }
+                coVerify(exactly = 1) { layoutServiceMock.getMainScreenLayoutData() }
             }
 
         @Test
         fun `Live data Object Should have success object inside`() = runBlocking {
             val screenInfoMock = mockk<ScreenInfo>()
-            coEvery { layoutRepositoryMock.getMainScreenLayoutData() } returns Response.Success(
+            coEvery { layoutServiceMock.getMainScreenLayoutData() } returns Response.Success(
                 screenInfo = screenInfoMock
             )
             subject.fetchScreenLayout()
@@ -64,7 +64,7 @@ class MainViewModelTest {
         fun `Should call default provider method to get layout`() = runBlocking {
             val failureResponseMock = mockk<Response.Failure>()
             every { defaultScreenProviderMock.getDefaultErrorScreen() } returns defaultScreenMock
-            coEvery { layoutRepositoryMock.getMainScreenLayoutData() } returns failureResponseMock
+            coEvery { layoutServiceMock.getMainScreenLayoutData() } returns failureResponseMock
             subject.fetchScreenLayout()
             verify(exactly = 1) { defaultScreenProviderMock.getDefaultErrorScreen() }
         }
@@ -73,7 +73,7 @@ class MainViewModelTest {
         fun `Live data Object Should have failure object inside`() = runBlocking {
             val failureResponseMock = mockk<Response.Failure>()
             every { defaultScreenProviderMock.getDefaultErrorScreen() } returns defaultScreenMock
-            coEvery { layoutRepositoryMock.getMainScreenLayoutData() } returns failureResponseMock
+            coEvery { layoutServiceMock.getMainScreenLayoutData() } returns failureResponseMock
             subject.fetchScreenLayout()
             Assertions.assertEquals(defaultScreenMock, subject.mainScreenLayoutLiveData.value)
         }
