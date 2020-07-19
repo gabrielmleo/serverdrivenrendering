@@ -18,15 +18,15 @@ class LayoutServiceTest {
     inner class `Given a layoutDataManager` {
 
         private val responseMock: Response = mockk()
-        private val layoutDataSourceMock: LayoutDataSource = mockk()
-        private val subject = LayoutService(layoutDataSourceMock)
+        private val repositoryMock: Repository = mockk()
+        private val subject = LayoutService(repository = repositoryMock)
 
         @Test
         fun `When call getMainScreenLayoutData Should call layoutDataManager method`() =
             runBlocking {
-                coEvery { layoutDataSourceMock.getMainScreenLayoutData() } returns responseMock
+                coEvery { repositoryMock.getMainScreenLayoutData() } returns responseMock
                 subject.getMainScreenLayoutData()
-                coVerify { layoutDataSourceMock.getMainScreenLayoutData() }
+                coVerify { repositoryMock.getMainScreenLayoutData() }
             }
     }
 }

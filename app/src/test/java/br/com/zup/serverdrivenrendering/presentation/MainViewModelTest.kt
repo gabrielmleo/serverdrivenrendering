@@ -25,7 +25,7 @@ class MainViewModelTest {
     private val testDispatcher = TestCoroutineDispatcher()
 
     private val subject = MainViewModel(
-        layoutRepository = layoutServiceMock,
+        layoutService = layoutServiceMock,
         dispatcher = testDispatcher,
         defaultScreenProvider = defaultScreenProviderMock
     )
