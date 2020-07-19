@@ -14,7 +14,7 @@ import org.junit.jupiter.api.TestInstance
 class DefaultScreenProviderTest {
 
     @Nested
-    inner class `Given a DefaultScreenProcider` {
+    inner class `Given a DefaultScreenProvider` {
 
         val subject = DefaultScreenProvider()
         @Test
