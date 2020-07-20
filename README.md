@@ -1,5 +1,5 @@
 
-# Server-Driven UI
+# Zup Challenge
 
 An app that read  a json specific file that represents screen components and its hierarchy and render native components.
 
