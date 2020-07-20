@@ -8,6 +8,7 @@ import br.com.zup.serverdrivenrendering.domain.LayoutService
 import br.com.zup.serverdrivenrendering.domain.Repository
 import br.com.zup.serverdrivenrendering.domain.util.DefaultScreenProvider
 import br.com.zup.serverdrivenrendering.presentation.render.ScreenInfoRenderer
+import br.com.zup.serverdrivenrendering.presentation.render.ViewProvider
 import br.com.zup.serverdrivenrendering.presentation.view.MainViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
@@ -42,5 +43,6 @@ val presentationModule = module {
     }
 
     factory { DefaultScreenProvider() }
-    factory { ScreenInfoRenderer(androidContext()) }
+    factory { ScreenInfoRenderer(viewProvider = get()) }
+    factory { ViewProvider(androidContext()) }
 }

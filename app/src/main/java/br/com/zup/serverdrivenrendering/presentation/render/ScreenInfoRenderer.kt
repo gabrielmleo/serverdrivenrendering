@@ -11,7 +11,7 @@ import br.com.zup.serverdrivenrendering.presentation.widget.core.Widget
 import br.com.zup.serverdrivenrendering.presentation.widget.layout.Vertical
 import br.com.zup.serverdrivenrendering.presentation.widget.ui.Text
 
-class ScreenInfoRenderer(private val context: Context) {
+class ScreenInfoRenderer(private val viewProvider: ViewProvider) {
 
     fun renderScreenInfo(screenInfo: ScreenInfo): ViewGroup {
         return when (screenInfo.rootComponent) {
@@ -25,9 +25,7 @@ class ScreenInfoRenderer(private val context: Context) {
     }
 
     private fun renderRootVerticalComponent(rootComponent: Vertical): ViewGroup {
-        val linearLayout = LinearLayout(context)
-        linearLayout.orientation = LinearLayout.VERTICAL
-        linearLayout.layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        val linearLayout = viewProvider.getLinearLayoutVertical()
         rootComponent.children.forEach {
             linearLayout.addView(renderVerticalChildComponent(it))
         }
@@ -49,22 +47,18 @@ class ScreenInfoRenderer(private val context: Context) {
     }
 
     private fun renderButtonComponent(it: br.com.zup.serverdrivenrendering.presentation.widget.ui.Button): Button {
-        val button = Button(context)
-        button.text = it.text
-        return button
+        return viewProvider.getButtonWithTextValue(it.text)
     }
 
     private fun renderTextComponent(it: Text): TextView {
-        val textView = TextView(context)
-        textView.text = it.text
-        return textView
+        return viewProvider.getTextViewWithTextValue(it.text)
     }
 
     private fun emptyLinearLayout(): LinearLayout {
-        return LinearLayout(context)
+        return viewProvider.getEmptyLinearLayout()
     }
 
     private fun emptyView(): View {
-        return View(context)
+        return viewProvider.getEmptyView()
     }
 }
