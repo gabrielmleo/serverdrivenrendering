@@ -1,0 +1,95 @@
+ext {
+    androidCompileSdkVersion    = 29
+    androidBuildToolsVersion    = "29.0.2"
+    androidMinSdkVersion        = 19
+    androidTargetSdkVersion     = 29
+
+    serverDrivenRenderingVersionCode    = 1
+    serverDrivenRenderingVersionName    = "1.0"
+
+    //libs versions
+    coroutineVersion                = "1.3.5"
+    androidAppCompatVersion         = "1.1.0"
+    androidCoreVersion              = "1.1.0"
+    androidConstraintLayoutVersion  = "1.1.3"
+    androidLifecycleVersion         = "2.2.0"
+    lifecycleVersion                = '2.1.0'
+
+    //test libs version
+    junitVersion            = "5.3.2"
+    mockkVersion            = "1.9.2"
+    androidTestVersion      = "1.2.0"
+    androidCoreTest         = "1.2.0"
+    androidJunitVersion     = "1.1.0"
+    koinVersion             = "2.1.6"
+
+
+    //libs dependencies
+    coroutine               = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+    coroutineAndroid        = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
+    kotlin                  = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    androidAppCompat        = "androidx.appcompat:appcompat:$androidAppCompatVersion"
+    androidCore             = "androidx.core:core-ktx:$androidCoreVersion"
+    androidConstraintLayout = "androidx.constraintlayout:constraintlayout:$androidConstraintLayoutVersion"
+    lifecycleExtensions     = "androidx.lifecycle:lifecycle-extensions:$androidLifecycleVersion"
+    lifecycleViewModelScope = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+
+    //test libs dependencies
+    junit               = "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    androidJunit        = "androidx.test.ext:junit:$androidJunitVersion"
+    androidJunitRunner  = "de.mannodermaus.junit5:android-test-runner:$androidJunitVersion"
+    mockk               = "io.mockk:mockk:$mockkVersion"
+    coroutineTest       = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineVersion"
+
+    androidCoreTest     = "androidx.test:core:$androidCoreTest"
+    junitJupiterEngine  = "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+
+    koin                = "org.koin:koin-android:$koinVersion"
+    koinViewModel       = "org.koin:koin-android-viewmodel:$koinVersion"
+
+
+    commonsDependencies = [
+            [configuration: "implementation", dependency: kotlin]
+    ]
+
+    androidDependencies = [
+            [configuration: "implementation", dependency: androidCore],
+            [configuration: "implementation", dependency: androidAppCompat],
+            [configuration: "implementation", dependency: androidConstraintLayout]
+    ]
+
+    koinDependencies = [
+            [configuration: "implementation", dependency: koin],
+            [configuration: "implementation", dependency: koinViewModel]
+    ]
+
+    lifecycleDependencies = [
+            [configuration: "implementation", dependency: lifecycleExtensions],
+            [configuration: "implementation", dependency: lifecycleViewModelScope]
+    ]
+
+    coroutineDependencies = [
+            [configuration: "implementation", dependency: coroutine],
+            [configuration: "implementation", dependency: coroutineAndroid]
+    ]
+
+    juntTestDependencies = [
+            [configuration: "testImplementation", dependency: mockk],
+            [configuration: "testImplementation", dependency: junit],
+            [configuration: "testImplementation", dependency: junitJupiterEngine],
+            [configuration: "testImplementation", dependency: coroutineTest]
+    ]
+
+    androidTestDependencies = [
+            [configuration: "androidTestImplementation", dependency: androidCoreTest],
+            [configuration: "androidTestImplementation", dependency: mockk]
+    ]
+
+    appDependencies = commonsDependencies +
+            androidDependencies +
+            coroutineDependencies +
+            lifecycleDependencies +
+            koinDependencies +
+            juntTestDependencies +
+            androidTestDependencies
+}

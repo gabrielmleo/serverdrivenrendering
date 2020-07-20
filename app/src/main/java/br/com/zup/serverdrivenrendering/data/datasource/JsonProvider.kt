@@ -1,4 +1,4 @@
-package br.com.zup.serverdrivenrendering
+package br.com.zup.serverdrivenrendering.data.datasource
 
 class JsonProvider {
 
