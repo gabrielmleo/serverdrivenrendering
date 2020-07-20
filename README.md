@@ -38,7 +38,7 @@ The project was divided into five packages:
 
 The overall app architecture is as follows
 
-![Gabriel's Challenger Architecture](.\generalfiles\architecture.png)
+![Architecture](generalfiles/architecture.png)
 
 
 ## Notes
